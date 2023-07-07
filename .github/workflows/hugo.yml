@@ -56,7 +56,7 @@ jobs:
         run: |
           hugo \
             --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL 'http://hi-welcome.com/'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
@@ -79,3 +79,21 @@ git init
 git submodule add https://github.com/theNewDynamic/gohugo-theme-ananke.git themes/ananke
 echo "theme = 'ananke'" >> hugo.toml
 hugo server
+hugo new posts/my-first-post.md
+---
+title: "My First Post"
+date: 2023-7-6T09:03:20-08:00
+draft: true
+---
+## Introduction
+
+This is **bold** text, and this is *emphasized* text.
+
+Visit the [Hugo](https://gohugo.io) website!
+
+hugo server --buildDrafts
+hugo server -D
+
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme = 'ananke'
